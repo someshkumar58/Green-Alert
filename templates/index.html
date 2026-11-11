@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Green Alert - Environmental Reporting</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #bce9f4;
+      color: #333;
+    }
+    header {
+      background-color: #0bc458;
+      color: rgb(6, 3, 3);
+      padding: 10px 20px;
+      text-align: center;
+      height: 100px;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 20px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+  .main-content {
+  width: 100%;
+  max-width: 600px;
+  height: 500px; 
+  position: relative;
+  margin: 40px auto 0 auto;
+  overflow: hidden;
+  margin-top: 100px;
+  box-shadow: 0 0.5px 15px rgba(12, 12, 12, 0.8);
+  border-radius: 20px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.slide img {
+  width: 100%;
+   height: 100%;
+  object-fit: cover;
+}
+
+
+    .main-content h2 {
+      color: #2e8b57;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .main-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background-color: #030303;
+      color: white;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 18px;
+      transition-duration: 0.5s;
+      margin-left: 40px;
+    
+    }
+
+    .buttons a:hover {
+      background-color: #29d495;
+      color: black;
+      transform: scale(1.5);
+      
+    }
+
+    footer {
+      background-color: #0bc458;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 16px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Green Alert</h1>
+    <p>“Be the change you wish to see in the world.” – Mahatma Gandhi</p>
+    <marquee style="color: rgb(5, 5, 5); font-size: 15px;">
+    <h2>Welcome to Green Alert! Report environmental issues and help us make a difference.</h2></marquee>
+
+  </header>
+  <div class="main-content">
+    <div class="slide"><img src="../static/images/image.1.jpg" alt="image1" style="width: 100%;height:100%;object-fit:cover"></div>
+    <div class="slide"><img src="../static/images/environmental pollution.png" alt="image2" style="width:100%;height:100%;object-fit:cover"></div>
+    <div class="slide"><img src="../static/images/sanatization.green.jpg" alt="image3" style="width:100%;height:100%;object-fit:cover"></div>
+    <div class="slide"><img src="../static/images/image.2.jpg" alt="image4" style="width:100%;height:100%;object-fit:cover"></div>
+    <div class="slide"><img src="../static/images/image.3.jpg" alt="image5" style="width:100%;height:100%x;object-fit:cover"></div>
+     <div class="slide"><img src="../static/images/image.4.jpg" alt="image6" style="width:100%;height:100%;object-fit:cover"></div>
+
+  </div>
+    
+
+  <div class="buttons">
+    <a href="{{ url_for('login') }}">User Login</a>
+    <a href="{{ url_for('admin_login') }}">Admin Login</a>
+    <a href="{{ url_for('register') }}">Register</a>
+    <a href="{{ url_for('department_login') }}">Department Login</a>
+  </div>
+
+  <footer>
+    Contact us at: <a href="mailto:support@greenalert.org">support@greenalert.org</a> |
+    Phone: +91-9876543210
+  </footer>
+
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000); // Change image every 3 seconds
+  }
+</script>
+
+
+</body>
+</html>

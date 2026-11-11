@@ -1,0 +1,79 @@
+# ==============================================================================
+# Green Alert (CSP B7) - .gitignore
+# Community-based Public Service Complaint Reporting and Management System
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Databases & Sensitive Local Data (NEVER COMMIT)
+# ------------------------------------------------------------------------------
+instance/
+*.db
+*.sqlite
+*.sqlite3
+instance/*.db
+instance/*.sqlite
+instance/*.sqlite3
+
+# ------------------------------------------------------------------------------
+# 2. Environment Variables & Secret Credentials (NEVER COMMIT)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+*.env
+!.env.example
+
+# ------------------------------------------------------------------------------
+# 3. User-Uploaded Complaint Media (Preserve uploads directory via .gitkeep)
+# ------------------------------------------------------------------------------
+static/uploads/*
+!static/uploads/.gitkeep
+
+# ------------------------------------------------------------------------------
+# 4. Python Bytecode, Caches & Virtual Environments
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyd
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ------------------------------------------------------------------------------
+# 5. Operating System Metadata & Editor Artifacts
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Green Alert</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f8fb;
+            margin: 0;
+        }
+
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .logout {
+            background-color: #c62828;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #e0f2f1;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            font-size: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-delete {
+            background-color: #e53935;
+            color: white;
+        }
+
+        .btn-forward {
+            background-color: #0288d1;
+            color: white;
+        }
+
+        select {
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .complaint-image {
+            max-width: 120px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container {
+            max-width: 130px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <form method="POST" action="{{ url_for('admin_logout') }}">
+            <button class="logout">Logout</button>
+        </form>
+    </header>
+
+    <div class="container">
+        <h2>All User Complaints</h2>
+        {% if complaints %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Forward to Department</th>
+                <th>Delete</th>
+            </tr>
+            {% for complaint in complaints %}
+            <tr>
+                <td>{{ complaint.id }}</td>
+                <td>{{ complaint.title }}</td>
+                <td>{{ complaint.description }}</td>
+                <td>{{ complaint.location }}</td>
+                <td class="image-container">
+                    {% if complaint.image %}
+                        <a href="{{ url_for('static', filename='uploads/' ~ complaint.image) }}" target="_blank">
+                            <img class="complaint-image" src="{{ url_for('static', filename='uploads/' ~ complaint.image) }}" alt="Complaint Image">
+                        </a>
+                    {% else %}
+                        No image
+                    {% endif %}
+                </td>
+                <td>{{ complaint.status }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('forward_complaint', complaint_id=complaint.id) }}">
+                        <select name="department">
+                            <option value="sanitation">Sanitation</option>
+                            <option value="water">Water</option>
+                            <option value="pollution">Pollution</option>
+                            <option value="forest">Forest</option>
+                        </select>
+                        <button class="btn btn-forward" type="submit">Forward</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('admin_delete_complaint', complaint_id=complaint.id) }}">
+                        <button class="btn btn-delete" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>No complaints submitted yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
