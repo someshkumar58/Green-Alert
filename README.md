@@ -81,7 +81,7 @@ Dedicated login (`/department_login`) and dashboards for 4 core departments:
 ## 📂 Project Structure
 
 ```
-Green-Alert-CSP-B7/
+Green-Alert/
 │
 ├── app.py                         # Core Flask application, routing, models, and business logic
 ├── requirements.txt               # Python package dependencies
@@ -119,8 +119,8 @@ python --version
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/someshkumar58/Green-Alert-CSP-B7.git
-cd Green-Alert-CSP-B7
+git clone https://github.com/someshkumar58/Green-Alert.git
+cd Green-Alert
 ```
 
 ### 3. Create and Activate a Virtual Environment
@@ -186,3 +186,4 @@ Open your web browser and navigate to:
 
 ## 📄 License
 This repository is developed as an academic and community service project (CSP B7). All rights reserved.
+
